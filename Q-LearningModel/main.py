@@ -148,8 +148,8 @@ def getNextLocation(currentRow, currentColumn, actionIndex):
 
 
 
-#function that will return the optimum path
-def getOptimumPath(startRow, startColumn):
+#function that will return the optimal path
+def getoptimalPath(startRow, startColumn):
     batteryPoints = initialBatteryPoints
 
     if isTerminalState(startRow, startColumn):
@@ -157,8 +157,8 @@ def getOptimumPath(startRow, startColumn):
 
     else:
         currentRow, currentColumn = startRow, startColumn
-        optimumPath = []
-        optimumPath.append([currentRow, currentColumn])
+        optimalPath = []
+        optimalPath.append([currentRow, currentColumn])
 
         #continue until gold is found
         while not isTerminalState(currentRow, currentColumn):
@@ -172,10 +172,10 @@ def getOptimumPath(startRow, startColumn):
             batteryPoints = batteryPoints + reward
 
             #append the path
-            optimumPath.append([currentRow, currentColumn])
+            optimalPath.append([currentRow, currentColumn])
 
         print('BatteryPoints:' + str(batteryPoints))
-        return optimumPath
+        return optimalPath
 
 
 
@@ -205,4 +205,4 @@ for episode in range(totalEpisodes):
         q_values[oldRow, oldColumn, actionIndex] = new_qValue
 
 
-print(getOptimumPath(start_row, start_column))
+print(getoptimalPath(start_row, start_column))
